@@ -43,8 +43,8 @@ def draw_scene(canvas, scene_left, scene_top, scene_right, scene_bottom):
     """
     # Call your functions here, such as draw_sky, draw_ground,
     # draw_snowman, draw_tree, draw_shrub, etc.
-    tree_center = scene_left + 80
-    tree_top = scene_top + 50
+    tree_center = scene_left + 50
+    tree_top = scene_top + 10
     tree_height = 150
     draw_pine_tree(canvas, tree_center, tree_top, tree_height)
 
