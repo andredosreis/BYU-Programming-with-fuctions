@@ -22,11 +22,11 @@ def prefix(string1, string2):
     limit = min(len(string1), len(string2))
     while i < limit:
         if string1[i] != string2[i]:
-           break
+            break
         i += 1
 
     # Extract a substring from string1 and return it.
-    pre = string1[0 : i]
+    pre = string1[0: i]
     return pre
 
 
@@ -60,5 +60,5 @@ def suffix(string1, string2):
         i2 -= 1
 
     # Extract a substring from string1 and return it.
-    suf = string1[i1+1 : ]
+    suf = string1[i1 + 1:]
     return suf
