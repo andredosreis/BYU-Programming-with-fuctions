@@ -1,4 +1,4 @@
-from sentences import get_determiner, get_noun, get_verb
+from sentences import get_determiner, get_noun, get_verb, get_preposition
 import pytest
 
 
@@ -7,7 +7,7 @@ import pytest
 def test_get_determiner():
     # 1. Test the single determiners.
 
-    single_determiners = ["a", "one"]
+    single_determiners = ["the", "one"]
 
     # This loop will repeat the statements inside it 4 times.
     # If a loop's counting variable is not used inside the
@@ -69,4 +69,12 @@ def test_get_verb():
     for _ in range(4):
         word = get_verb(1, "present")
         assert word in present_plural
+
+def test_get_preposition():
+    preposition = ["about", "above", "across", "after", "along", "around", "at", "before", "behind", "below", "beyond", "by", "despite", "except", "for", "from", "in", "into", "near", "of", "off", "on", "onto", "out", "over", "past", "to", "under", "with", "without"]
+
+    for _ in range(4):
+        word = get_preposition()
+        assert word in preposition
+
 pytest.main(["-v", "--tb=line", "-rN", "test_sentences.py"])

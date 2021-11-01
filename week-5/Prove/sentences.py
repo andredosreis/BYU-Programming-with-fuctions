@@ -56,7 +56,7 @@ def get_determiner(grammatical_number):
     """
 
     if grammatical_number == 1:
-        words = ["a", "one"]
+        words = ["the", "one"]
     else:
         words = ["some", "many"]
 
