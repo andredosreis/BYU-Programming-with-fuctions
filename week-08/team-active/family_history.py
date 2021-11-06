@@ -103,7 +103,10 @@ def print_death_age(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    for key,volue in people_dict:
+
+        pass
+
 
 
 def count_genders(people_dict):
