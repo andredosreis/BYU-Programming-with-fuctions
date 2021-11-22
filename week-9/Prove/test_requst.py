@@ -2,32 +2,39 @@ import csv
 from datetime import datetime
 
 all_product = {}
+PRODUCT_INXEX = 0
+NAME_INDEX = 1
+PRICE_INDEX = 2
+QUANTITY_INDEX = 1
+PRODUCT_REQUEST_INDEX = 0
 def main():
-    try:
-        with open("/home/andredosreis/Documentos/Estudos/BYU-Programming-with-fuctions/week-10/prove/products.csv", "rt") as products_file:
-            for line in products_file:
-                print(line)
 
+   
+
+    read_product_store = read_product("/home/andredosreis/Documentos/Estudos/BYU-Programming-with-fuctions/week-9/Prove/products.csv",PRODUCT_INXEX, NAME_INDEX,PRICE_INDEX)
     
-        PRODUCT_INXEX = 0
-        NAME_INDEX = 1
-        PRICE_INDEX = 2
-        QUANTITY_INDEX = 1
-        PRODUCT_REQUEST_INDEX = 0
+    try: 
 
-        read_product_store = read_product("/home/andredosreis/Documentos/Estudos/BYU-Programming-with-fuctions/week-9/Prove/products.csv",PRODUCT_INXEX, NAME_INDEX,PRICE_INDEX)
-        
-        for key, value in read_product_store.items():
+        file_product =  input("Enter the name of text file (products.csv): ")
+        all_product = read_product(file_product)
+        print('\n')
+
+        for key, value in all_product.items():
             print(key,value)
 
         item = 0
         subtotal = 0
+        
+        print('\n')
+
+        file_request = input("Enter the name of text file(request.csv): ")
         with open('/home/andredosreis/Documentos/Estudos/BYU-Programming-with-fuctions/week-9/Prove/request.csv', 'rt') as csvfile:
 
             csvreader = csv.reader(csvfile)
             next(csvreader)
             print('REQUEST ITENS\n')
 
+            
             for row in csvreader:
                 product = all_product[row[PRODUCT_INXEX]]
                 name = product[0]
@@ -52,12 +59,18 @@ def main():
         current_date_and_time = datetime.now()
         print(f'Thank you for shopping at the Inkom Emporium.\n{current_date_and_time:%c}')
 
-    except (FileNotFoundError, PermissionError) as not_found_err:
+        key = input(" Enter with the product number: ")
+            product = all_product[key]
+            print(f'This the product key {product[0]}')
 
-        print(not_found_err)
-
-    except KeyError as error:
-        print('please, this a keyerror, run this program again and enter a product')
+        except (FileNotFoundError, PermissionError) as error:
+            print(error)
+            print("Please, run the program again and enter the" \
+                    " name of an existing file.")
+            
+        except KeyError as error:
+            print("Please, This is a Keyerror, run this program again and enter with a product key that is in file product.csv.")
+        
   
 def read_product(filename, key_product, value_name, value_price):
     
